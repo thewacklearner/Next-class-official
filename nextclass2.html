@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NextClass</title>
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/1055/1055687.png" type="image/x-icon">
+    <link rel="shortcut icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAABccqhmAAAACXBIWXMAAAsTAAALEwEAmpwYAAAKT2lDQ1BQaG90b3Nob3AgSUNDIHByb2ZpbGUAAHjanVNnVFPpFj333vRCS4iAlEtvUhUIIFJCi4AUkSYqIQkQSoghodkVUcERRUUEG8igiAOOjoCMFVEsDIoK2AfkIaKOg6OIisr74Xuja9a89+bN/rXXPues852zzwfACAyWSDNRNYAMqUIeEeCDx8TG4eQuQIEKJHAAEAizZCFz/SMBAPh+PDwrIsAHvgABeNMLCADATZvAMByH/w/qQplcAYCEAcB0kThLCIAUAEB6jkKmAEBGAYCdmCZTAKAEAGDLY2LjAFAtAGAnf+bTAICd+Jl7AQBblCEVAaCRACATZYhEAGg7AKzPVopFAFgwABRmS8Q5ANgtADBJV2ZIALC3AMDOEAuyAAgMADBRiIUpAAR7AGDIIyN4AISZABRG8lc88SuuEOcqAAB4mbI8uSQ5RYFbCC1xB1dXLh4ozkkXKxQ2YQJhmkAuwnmZGTKBNA/g88wAAKCRFRHgg/P9eM4Ors7ONo62Dl8t6r8G/yJiYuP+5c+rcEAAAOF0ftH+LC+zGoA7BoBt/qIl7gRoXgugdfeLZrIPQLUAoOnaV/Nw+H48PEWhkLnZ2eXk5NhKxEJbYcpXff5nwl/AV/1s+X48/Pf14L7iJIEyXYFHBPjgwsz0TKUcz5IJhGLc5o9H/LcL//wd0yLESWK5WCoU41EScY5EmozzMqUiiUKSKcUl0v9k4t8s+wM+3zUAsGo+AXuRLahdYwP2SycQWHTA4vcAAPK7b8HUKAgDgGiD4c93/+8//UegJQCAZkmScQAAXkQkLlTKsz/HCAAARKCBKrBBG/TBGCzABhzBBdzBC/xgNoRCJMTCQhBCCmSAHHJgKayCQiiGzbAdKmAv1EAdNMBRaIaTcA4uwlW4Dj1wD/phCJ7BKLyBCQRByAgTYSHaiAFiilgjjggXmYX4IcFIBBKLJCDJiBRRIkuRNUgxUopUIFVIHfI9cgI5h1xGupE7yAAygvyGvEcxlIGyUT3UDLVDuag3GoRGogvQZHQxmo8WoJvQcrQaPYw2oefQq2gP2o8+Q8cwwOgYBzPEbDAuxsNCsTgsCZNjy7EirAyrxhqwVqwDu4n1Y8+xdwQSgUXACTYEd0IgYR5BSFhMWE7YSKggHCQ0EdoJNwkDhFHCJyKTqEu0JroR+cQYYjIxh1hILCPWEo8TLxB7iEPENyQSiUMyJ7mQAkmxpFTSEtJG0m5SI+ksqZs0SBojk8naZGuyBzmULCAryIXkneTD5DPkG+Qh8lsKnWJAcaT4U+IoUspqShnlEOU05QZlmDJBVaOaUt2ooVQRNY9aQq2htlKvUYeoEzR1mjnNgxZJS6WtopXTGmgXaPdpr+h0uhHdlR5Ol9BX0svpR+iX6AP0dwwNhhWDx4hnKBmbGAcYZxl3GK+YTKYZ04sZx1QwNzHrmOeZD5lvVVgqtip8FZHKCpVKlSaVGyovVKmqpqreqgtV81XLVI+pXlN9rkZVM1PjqQnUlqtVqp1Q61MbU2epO6iHqmeob1Q/pH5Z/YkGWcNMw09DpFGgsV/jvMYgC2MZs3gsIWsNq4Z1gTXEJrHN2Xx2KruY/R27iz2qqaE5QzNKM1ezUvOUZj8H45hx+Jx0TgnnKKeX836K3hTvKeIpG6Y0TLkxZVxrqpaXllirSKtRq0frvTau7aedpr1Fu1n7gQ5Bx0onXCdHZ4/OBZ3nU9lT3acKpxZNPTr1ri6qa6UbobtEd79up+6Ynr5egJ5Mb6feeb3n+hx9L/1U/W36p/VHDFgGswwkBtsMzhg8xTVxbzwdL8fb8VFDXcNAQ6VhlWGX4SU3p6/A/+AqaYfQbdsMAAA=" type="image/x-icon">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Knewave&family=Inter:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Password Protection Styles */
+        .password-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            margin: 2rem auto;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .password-container h2 {
+            color: #667eea;
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        .password-input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+            background: white;
+            color: #2d3748;
+        }
+
+        .password-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .password-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .password-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .password-button:hover::before {
+            left: 100%;
+        }
+
+        .password-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+        }
+
+        .password-hint {
+            color: #718096;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            font-style: italic;
+        }
+
+        .logout-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(248, 113, 113, 0.9);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+
+        .logout-btn:hover {
+            background: rgba(239, 68, 68, 0.9);
+            transform: translateY(-2px);
+        }
+
+        /* Header Styles */
+        header {
+            text-align: center;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .header-content {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 1.5rem 2rem;
+            display: inline-block;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .header-content h1 {
+            font-family: "Knewave", system-ui;
+            font-size: 2.5rem;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin: 0;
+        }
+
+        .header-content img {
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+            transition: transform 0.3s ease;
+        }
+
+        .header-content img:hover {
+            transform: rotate(10deg) scale(1.1);
+        }
+
+        /* Navigation Styles */
+        nav {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            margin: 0 auto 3rem;
+            max-width: 600px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding: 1rem;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        nav a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        nav a:hover::before {
+            left: 100%;
+        }
+
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Main Content */
+        main {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .intro-title {
+            text-align: center;
+            color: #5a67d8;
+            margin-bottom: 2rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .month-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            font-size: 1.8rem;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            animation: slideIn 0.6s ease-out;
+        }
+
+        .day-section {
+            background: #f8fafc;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 5px solid #667eea;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .day-section:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .day-title {
+            color: #2d3748;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .day-title::before {
+            content: '📅';
+            font-size: 1.2rem;
+        }
+
+        .module-assessment {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 10px;
+            padding: 1rem;
+            margin: 1rem 0;
+            color: #856404;
+            font-weight: 500;
+        }
+
+        .module-assessment::before {
+            content: '⚠️ ';
+            margin-right: 5px;
+        }
+
+        .class-list {
+            list-style: none;
+        }
+
+        .class-item {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .class-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #667eea, #764ba2);
+        }
+
+        .class-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .class-title {
+            color: #2d3748;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .class-title::before {
+            content: '🎓';
+        }
+
+        .class-timing {
+            color: #718096;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .class-timing::before {
+            content: '🕐';
+        }
+
+        .join-btn {
+            background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(66, 153, 225, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .join-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .join-btn:hover::before {
+            left: 100%;
+        }
+
+        .join-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(66, 153, 225, 0.6);
+        }
+
+        .join-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Footer Styles */
+        footer {
+            background: rgba(45, 55, 72, 0.95);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 2rem;
+            border-radius: 20px 20px 0 0;
+            text-align: center;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+        }
+
+        footer h2 {
+            margin: 1.5rem 0 1rem;
+            color: #e2e8f0;
+            font-weight: 500;
+        }
+
+        .footer-btn {
+            background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .footer-btn.review {
+            background: linear-gradient(135deg, #f56565 0%, #e53e3e 100%);
+        }
+
+        .footer-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        footer p {
+            margin-top: 2rem;
+            color: #a0aec0;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .header-content h1 {
+                font-size: 2rem;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .class-title {
+                font-size: 1.1rem;
+            }
+
+            main {
+                padding: 1.5rem;
+            }
+
+            .password-container {
+                margin: 1rem;
+                padding: 2rem 1rem;
+            }
+
+            .logout-btn {
+                top: 10px;
+                right: 10px;
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-content {
+                padding: 1rem;
+            }
+
+            .header-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .day-section {
+                padding: 1rem;
+            }
+
+            .class-item {
+                padding: 1rem;
+            }
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1>
+                    NextClass
+                    <img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png" alt="NextClass Logo" width="60" height="60">
+                </h1>
+            </div>
+        </header>
+
+        <!-- Password Protection Screen -->
+        <div id="passwordPrompt" class="password-container">
+            <h2>🔒 Enter Course Password</h2>
+            <input type="password" id="passwordInput" class="password-input" placeholder="Enter your course password">
+            <button onclick="checkPassword()" class="password-button">🚀 Access Classes</button>
+            <p class="password-hint">Contact your course administrator for the password</p>
+        </div>
+
+        <!-- Logout Button (hidden initially) -->
+        <button id="logoutBtn" class="logout-btn" onclick="logout()" style="display: none;">
+            🚪 Logout
+        </button>
+
+        <!-- Navigation (hidden initially) -->
+        <nav id="navigation" style="display: none;">
+            <ul>
+                <li><a href="index.html">🏠 Home</a></li>
+                <li><a href="https://moonlit-kitsune-c0f005.netlify.app/" target="_blank">📚 Study Materials</a></li>
+                <li><a href="mailto:">📧 Contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content (hidden initially) -->
+        <main id="mainContent" style="display: none;">
+            <h1 class="intro-title">📅 This webpage provides all links to the upcoming classes</h1>
+            
+            <div class="month-header">August 2025</div>
+            
+            <div class="day-section">
+                <h2 class="day-title">Friday, 1 August 2025</h2>
+                <div class="module-assessment">
+                    <strong>Module Assessment opens</strong>
+                </div>
+            </div>
+
+            <div class="day-section">
+                <h2 class="day-title">Saturday, 2 August 2025</h2>
+                <ul class="class-list">
+                    <li class="class-item">
+                        <h3 class="class-title">Live Class-2 Business Communication</h3>
+                        <p class="class-timing">Timing: 09:00-09:50</p>
+                        <a href="https://us02web.zoom.us/j/83922950393" target="_blank">
+                            <button class="join-btn">
+                                🚀 Join Class
+                            </button>
+                        </a>
+                    </li>
+                    <li class="class-item">
+                        <h3 class="class-title">Class - 2_Computer and Information Technology</h3>
+                        <p class="class-timing">Timing: 11:00-11:50</p>
+                        <a href="https://amity-edu.zoom.us/j/88079337821" target="_blank">
+                            <button class="join-btn">
+                                🚀 Join Class
+                            </button>
+                        </a>
+                    </li>
+                    <li class="class-item">
+                        <h3 class="class-title">Live Class 2 - Programming in C</h3>
+                        <p class="class-timing">Timing: 11:00-11:50</p>
+                        <a href="https://us02web.zoom.us/j/87630823395" target="_blank">
+                            <button class="join-btn">
+                                🚀 Join Class
+                            </button>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="day-section">
+                <h2 class="day-title">Sunday, 3 August 2025</h2>
+                <ul class="class-list">
+                    <li class="class-item">
+                        <h3 class="class-title">Live Class 3 - Programming in C</h3>
+                        <p class="class-timing">Timing: 09:00-09:50</p>
+                        <a href="https://us02web.zoom.us/j/82235368396" target="_blank">
+                            <button class="join-btn">
+                                🚀 Join Class
+                            </button>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="day-section">
+                <h2 class="day-title">Sunday, 10 August 2025</h2>
+                <ul class="class-list">
+                    <li class="class-item">
+                        <h3 class="class-title">Live Class 2 - Human Computer Interaction</h3>
+                        <p class="class-timing">Timing: 12:00-12:50</p>
+                        <a href="https://us02web.zoom.us/j/86498099246" target="_blank">
+                            <button class="join-btn">
+                                🚀 Join Class
+                            </button>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="day-section">
+                <h2 class="day-title">Sunday, 17 August 2025</h2>
+                <ul class="class-list">
+                    <li class="class-item">
+                        <h3 class="class-title">Live Class - 3_Computer and Information Technology</h3>
+                        <p class="class-timing">Timing: 11:00-11:50</p>
+                        <a href="https://us02web.zoom.us/j/83208348849" target="_blank">
+                            <button class="join-btn">
+                                🚀 Join Class
+                            </button>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="day-section">
+                <h2 class="day-title">Saturday, 23 August 2025</h2>
+                <ul class="class-list">
+                    <li class="class-item">
+                        <h3 class="class-title">Live Class 3 - Human Computer Interaction</h3>
+                        <p class="class-timing">Timing: 12:00-12:50</p>
+                        <a href="https://us02web.zoom.us/j/88262114933" target="_blank">
+                            <button class="join-btn">
+                                🚀 Join Class
+                            </button>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="day-section">
+                <h2 class="day-title">Saturday, 30 August 2025</h2>
+                <ul class="class-list">
+                    <li class="class-item">
+                        <h3 class="class-title">Live Class - 4_Computer and Information Technology</h3>
+                        <p class="class-timing">Timing: 11:00-11:50</p>
+                        <a href="https://amity-edu.zoom.us/j/86805303315" target="_blank">
+                            <button class="join-btn">
+                                🚀 Join Class
+                            </button>
+                        </a>
+                     </li>
+                    <li class="class-item">
+                        <h3 class="class-title">Live Class 4 - Human Computer Interaction</h3>
+                        <p class="class-timing">Timing: 12:00-12:50</p>
+                        <a href="https://us02web.zoom.us/j/81627976012" target="_blank">
+                            <button class="join-btn">
+                                🚀 Join Class
+                            </button>
+                        </a>
+                    </li>
+                    <li class="class-item">
+                        <h3 class="class-title">Live Class 4 - Programming in C</h3>
+                        <p class="class-timing">Timing: 16:00-16:50</p>
+                        <a href="https://us02web.zoom.us/j/88686014173" target="_blank">
+                            <button class="join-btn">
+                                🚀 Join Class
+                            </button>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <h2>📚 For notes and study material visit us at</h2>
+        <a href="https://moonlit-kitsune-c0f005.netlify.app/" target="_blank" class="footer-btn">
+            Notewise
+        </a>
+        
+        <h2>💭 Please leave us a review or any suggestions</h2>
+        <a href="https://forms.gle/AfFfPAWTfmo9fpzj9" target="_blank" class="footer-btn review">
+            Review Us
+        </a>
+
+        <p>&copy; 2025 NextClass. All rights reserved.</p>
+    </footer>
+<script>
+    const correctPassword = "bca2025"; // 👈 Change this to your new password
+
+    function checkPassword() {
+        const input = document.getElementById("passwordInput").value;
+
+        if (input === correctPassword) {
+            document.getElementById("passwordPrompt").style.display = "none";
+            document.getElementById("navigation").style.display = "block";
+            document.getElementById("mainContent").style.display = "block";
+            document.getElementById("logoutBtn").style.display = "block";
+        } else {
+            alert("Incorrect password. Please try again.");
+        }
+    }
+
+    function logout() {
+        document.getElementById("passwordPrompt").style.display = "block";
+        document.getElementById("navigation").style.display = "none";
+        document.getElementById("mainContent").style.display = "none";
+        document.getElementById("logoutBtn").style.display = "none";
+        document.getElementById("passwordInput").value = "";
+    }
+</script>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
